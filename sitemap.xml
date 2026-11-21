@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/index.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/einleitung.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/kapitel-1---einrichtung-der-arbeitsumgebung.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/kapitel-2---einfuhrung-in-nestjs.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/kapitel-3---der-nestjs-server-fur-die-anwendung-rdvmedecins.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/kapitel-4---einfuhrung-in-vuejs.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/kapitel-5---der-vuejs-client-fur-die-anwendung-rdvmedecins.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/de-vuejs-nestjs-sept-2026/kapitel-6---fazit-und-nachste-schritte.html</loc>
+         <lastmod>2026-11-21</lastmod>
+    </url>
+</urlset>

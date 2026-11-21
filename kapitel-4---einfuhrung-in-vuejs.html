@@ -1,0 +1,971 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Ein Client-Server-Beispiel mit Vue.js/NestJS">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/de-vuejs-nestjs-sept-2026/kapitel-4---einfuhrung-in-vuejs.html">
+      
+      
+        <link rel="prev" href="kapitel-3---der-nestjs-server-fur-die-anwendung-rdvmedecins.html">
+      
+      
+        <link rel="next" href="kapitel-5---der-vuejs-client-fur-die-anwendung-rdvmedecins.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>5. Kapitel 4 - Einführung in [Vue.js] - Ein Client-Server-Beispiel mit Vue.js/NestJS</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Ein Client-Server-Beispiel mit Vue.js/NestJS";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-kapitel-4-einfuhrung-in-vuejs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Ein Client-Server-Beispiel mit Vue.js/NestJS" class="md-header__button md-logo" aria-label="Ein Client-Server-Beispiel mit Vue.js/NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ein Client-Server-Beispiel mit Vue.js/NestJS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Kapitel 4 - Einführung in [Vue.js]
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum dunklen Modus wechseln"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Zum dunklen Modus wechseln" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum hellen Modus wechseln"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Zum hellen Modus wechseln" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/de-vuejs-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Ein Client-Server-Beispiel mit Vue.js/NestJS" class="md-nav__button md-logo" aria-label="Ein Client-Server-Beispiel mit Vue.js/NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Ein Client-Server-Beispiel mit Vue.js/NestJS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/de-vuejs-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="einleitung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Einleitung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-1---einrichtung-der-arbeitsumgebung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Kapitel 1 - Einrichtung der Arbeitsumgebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-2---einfuhrung-in-nestjs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Kapitel 2 - Einführung in [NestJS]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-3---der-nestjs-server-fur-die-anwendung-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Kapitel 3 - Der [NestJS]-Server für die Anwendung [RdvMedecins]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Kapitel 4 - Einführung in [Vue.js]
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="kapitel-4---einfuhrung-in-vuejs.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Kapitel 4 - Einführung in [Vue.js]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-quellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Quellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-von-angularjs-1x-zu-vuejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Von AngularJS 1.x zu [Vue.js]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-das-konzept-hinter-einer-vuejs-anwendung-die-single-page-anwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Das Konzept hinter einer [Vue.js]-Anwendung: die „Single-Page-Anwendung“
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-die-komponenten-vue-dateien-und-composition-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Die Komponenten: [.vue]-Dateien und [Composition API]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-der-lokale-zustand-refreactive-und-die-props" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5. Der lokale Zustand: [ref]/[reactive] und die Props
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-keine-module-jede-datei-ist-bereits-eigenstandig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6. Keine Module: Jede Datei ist bereits eigenständig
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-geteilte-logik-composables-und-provideinject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7. Geteilte Logik: Composables und [provide]/[inject]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-kommunikation-mit-dem-server-fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8. Kommunikation mit dem Server: [fetch]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-bedingtes-rendern-und-listen-v-ifv-else-und-v-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9. Bedingtes Rendern und Listen: [v-if]/[v-else] und [v-for]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#510-zusammenfassung-zuordnungen-angular-react-vuejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10. Zusammenfassung: Zuordnungen [Angular] -&gt; [React] -&gt; [Vue.js]
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-5---der-vuejs-client-fur-die-anwendung-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Kapitel 5 - Der [Vue.js]-Client für die Anwendung [RdvMedecins]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-6---fazit-und-nachste-schritte.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Kapitel 6 - Fazit und nächste Schritte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="chapitre-4---introduction-a-vuejs" name="chapitre-4---introduction-a-vuejs" class="odt-bookmark-anchor"></span></p>
+<h1 id="5-kapitel-4-einfuhrung-in-vuejs">5. <span style="color: #2e74b5">Kapitel 4 - Einführung in [Vue.js]</span></h1>
+<p><span id="sources-3" name="sources-3" class="odt-bookmark-anchor"></span></p>
+<h2 id="51-quellen">5.1. <span style="color: #2e74b5">Quellen</span></h2>
+<p>Dieses Kapitel basiert auf der offiziellen Dokumentation von <em>[Vue.js]</em>: vuejs.org, und insbesondere auf deren Guide (vuejs.org/guide/introduction.html).</p>
+<p><span id="dangularjs-1x-a-vuejs" name="dangularjs-1x-a-vuejs" class="odt-bookmark-anchor"></span></p>
+<h2 id="52-von-angularjs-1x-zu-vuejs">5.2. <span style="color: #2e74b5">Von AngularJS 1.x zu [Vue.js]</span></h2>
+<p>Das ursprüngliche Dokument (2014) verwendete AngularJS 1.x: ein Framework (noch ohne TypeScript), das um $scope, Controller, Direktiven (ng-repeat, ng-if …) und einen Mechanismus zur Änderungserkennung auf Basis der „Digest-Schleife“ ($digest) und der Variablenüberwachung ($watch) organisiert war.</p>
+<p><em>[Vue.js]</em> (2014 von Evan You geschaffen, nach einer Erfahrung bei Google mit AngularJS) ist wie <em>[Angular]</em> ein vollwertiges Framework: Anders als <em>[React]</em> (eine einfache Bibliothek für Oberflächen) bringt es ein eigenes Komponentensystem und eine eigene reaktive Zustandsverwaltung mit und bietet – über separate offizielle Pakete, die in diesem Dokument nicht verwendet werden – einen Router (<em>[vue-router]</em>) und einen globalen Zustandsverwalter (<em>[Pinia]</em>). <em>[Vue.js]</em> bezeichnet sich selbst als „progressiv“: ein auf die View-Schicht konzentrierter Kern (vom Konzept her vergleichbar mit $scope/Template von AngularJS 1.x), ergänzt durch ein eigenes Komponentenformat – die <em>[.vue]</em>-Dateien (siehe unten). Dieses Kapitel stellt diese Konzepte einzeln vor, mit kurzen, von der Fallstudie unabhängigen Beispielen – das folgende Kapitel zeigt ihre Anwendung im vollständigen <em>[RdvMedecins]</em>-Client, in <em>[Vue.js]</em> 3.</p>
+<p><span id="le-principe-dune-application-vuejs--le--single-page-application-" name="le-principe-dune-application-vuejs--le--single-page-application-" class="odt-bookmark-anchor"></span></p>
+<h2 id="53-das-konzept-hinter-einer-vuejs-anwendung-die-single-page-anwendung">5.3. <span style="color: #2e74b5">Das Konzept hinter einer [Vue.js]-Anwendung: die „Single-Page-Anwendung“</span></h2>
+<p>Eine <em>[Vue.js]</em>-Anwendung ist, wie eine <em>[Angular]</em>- oder <em>[React]</em>-Anwendung, eine Single-Page-Anwendung (SPA): Der Server liefert nur eine einzige HTML-Seite an den Browser, die eine einzige JavaScript-Datei enthält, in der die gesamte Logik der Anwendung steckt. Sobald diese Seite geladen ist, gibt es nie wieder ein vollständiges Neuladen der Seite: Jede Benutzerinteraktion (Wechsel der Ansicht, Absenden eines Formulars usw.) wird vom bereits im Browser vorhandenen JavaScript-Code verarbeitet, der die Anzeige aktualisiert und im Hintergrund über asynchrone HTTP-Anfragen (meist mit JSON) mit dem Server kommuniziert. Das war bereits das Prinzip des ursprünglichen Dokuments mit AngularJS 1.x sowie der Varianten <em>[Angular]</em> und <em>[React]</em> in diesem Kurs – es hat sich nicht geändert: Nur das Framework, das die Anzeige übernimmt, unterscheidet sich von Variante zu Variante.</p>
+<p><span id="les-composants--fichiers-vue-et-le-composition-api" name="les-composants--fichiers-vue-et-le-composition-api" class="odt-bookmark-anchor"></span></p>
+<h2 id="54-die-komponenten-vue-dateien-und-composition-api">5.4. <span style="color: #2e74b5">Die Komponenten: [.vue]-Dateien und [Composition API]</span></h2>
+<p>Wie in <em>[Angular]</em> und <em>[React]</em> ist eine Komponente die Grundeinheit einer <em>[Vue.js]</em>-Anwendung: Sie erzeugt anhand ihres aktuellen Zustands und der Eigenschaften, die sie erhält, das, was auf dem Bildschirm angezeigt werden soll. Der Unterschied liegt in der Form: Eine <em>[Angular]</em>-Komponente ist eine dekorierte Klasse, die mit einem separaten (oder Inline-)HTML-Template verbunden ist; eine <em>[React]</em>-Komponente ist eine Funktion, die <em>[JSX]</em> zurückgibt; eine <em>[Vue.js]</em>-Komponente ist eine „Single-File“-Datei <em>[.vue]</em>, die drei verschiedene Blöcke in einer einzigen Datei vereint: ein <em>[&lt;template&gt;]</em> (das HTML, ähnlich dem von <em>[Angular]</em>), ein <em>[&lt;script setup&gt;]</em> (die Logik, wie in TypeScript) und optional ein <em>[&lt;style&gt;]</em> (die für diese Komponente spezifischen Stile).</p>
+<p>Hier ist eine sehr kleine, von der Fallstudie unabhängige Komponente, die <em>[CounterComponent]</em> (<em>[Angular]</em>) und <em>[Counter.tsx]</em> (<em>[React]</em>) entspricht, die in diesem Kurs bereits vorgestellt wurden:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">Counter</span><span class="p">.</span><span class="nx">vue</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">setup</span><span class="w"> </span><span class="nx">lang</span><span class="o">=</span><span class="s2">"ts"</span><span class="o">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ref</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vue'</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ref</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kd">function</span><span class="w"> </span><span class="nx">increment</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="nx">value</span><span class="p">.</span><span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="o">&lt;</span><span class="err">/script&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Value</span><span class="o">:</span><span class="w"> </span><span class="p">{{</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="kd">@click</span><span class="o">=</span><span class="s2">"increment"</span><span class="o">&gt;+</span><span class="mf">1</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="o">&lt;</span><span class="err">/template&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Zerlegen wir diesen Code:</p>
+<ul>
+  <li>Zeile 3: <i><b>[import { ref } from &#x27;vue&#x27;;] </b></i>— <i>[ref] </i>ist die Funktion von <i>[Vue.js], </i>die einen reaktiven Wert erzeugt: eine Rolle, die mit der eines Signals auf der <i>[Angular]</i>-Seite oder von <i>[useState] </i>auf der <i>[React]</i>-Seite vergleichbar ist;
+  </li>
+  <li>Zeile 5: <i><b>[const value = ref(0);] </b></i>— <i>[ref(0)] </i>erzeugt eine reaktive „Box“, die mit 0 initialisiert wird. Anders als <i>[useState]</i>() (<i>[React]</i>), das ein PAAR zurückgibt (den Wert und einen Setter), <i>[ref()] </i>gibt ein EINZIGES Objekt zurück, dessen Wert über seine Eigenschaft <i>[.value]</i> gelesen und geschrieben wird – ein Mechanismus, der konzeptionell eher einem <i>[signal()] [Angular]</i> ähnelt (das mit <i>[mySignal()] </i>gelesen und mit <i>[mySignal.set(...)]</i> geschrieben wird) als einem <i>[value, setValue]</i>-Paar;
+  </li>
+  <li>Zeile 8: <i><b>[value.value++;] </b></i>— die Änderung von <i>[.value] </i>aktualisiert den Wert UND zeichnet automatisch alles neu, was in <i>[&lt;template&gt;]</i> davon abhängt – genau wie bei <i>[mySignal.update(v =&gt; v + 1)] </i>in <i>[Angular]</i>; anders als in <i>[React] </i>(wo Zustandswerte unveränderlich sind) hindert hier nichts daran, <i>[.value]</i> direkt zu inkrementieren (++), ohne eine separate Update-Funktion zu durchlaufen;
+  </li>
+  <li>Zeilen 12–13: <i><b>[Value: {{ value }}] </b></i>— <i>[&lt;template&gt;] IST das Template</i>, so wie das HTML bei <i>[Angular]</i> getrennt ist – anders als bei <i>[JSX]</i> und <i>[React]</i>, die von JavaScript abgeleitet sind und mit dem Code der Komponentenfunktion vermischt werden. Die doppelten geschweiften Klammern <i>[{{ }}] </i>fügen dort einen Ausdruck ein – dieselbe Rolle wie <i>[{{ value() }}] </i>in <i>[Angular]</i> (<i>[Vue.js] </i>erfordert KEINE Aufrufklammern ([value], nicht [value()]): In einem <i>[&lt;template&gt;]</i> wird ein <i>[ref] </i>automatisch „ausgepackt“; es ist nie nötig, <i>[.value]</i> zu schreiben).
+  </li>
+</ul>
+
+<p><span id="letat-local--refreactive-et-les-props" name="letat-local--refreactive-et-les-props" class="odt-bookmark-anchor"></span></p>
+<h2 id="55-der-lokale-zustand-refreactive-und-die-props">5.5. <span style="color: #2e74b5">Der lokale Zustand: [ref]/[reactive] und die Props</span></h2>
+<p>In AngularJS 1.x erkannte <em>[Angular]</em> die Änderung eines Datums mit einer systematischen Prüfschleife ($digest), die in der Variante <em>[Angular]</em> dieses Kurses durch Signals (signal(), computed()) ersetzt wurde. <em>[React]</em> verfolgt einen anderen Ansatz: Eine Komponente führt bei jeder Zustandsänderung ihre Funktion vollständig neu aus. <em>[Vue.js]</em> verfolgt einen dritten, hybriden Ansatz: Wie <em>[Angular]</em> verfolgt es genau, welche reaktiven Werte eine Komponente verwendet (dank des kompilierten <em>[&lt;template&gt;]</em> und des „Proxy“-Systems von [ref]/<em>[reactive]</em>) und aktualisiert nur die Teile des DOM, die tatsächlich von ihnen abhängen – ohne je das gesamte <em>[&lt;script setup&gt;]</em> neu auszuführen und ohne den Aufwand des virtuellen DOM, den <em>[React]</em> für ein vergleichbares Ergebnis verwendet.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>Funktion</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>Rolle</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ref(initialValue)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">erzeugt einen lokalen Zustand mit einem EINZIGEN Wert; wird über <i>[.value] </i>in <i>[&lt;script&gt;] </i>gelesen/geschrieben (nie in <i>[&lt;template&gt;]</i>)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>reactive(initialObject)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">erzeugt einen lokalen Zustand mit MEHREREN Eigenschaften (ein Objekt); wird direkt gelesen/geschrieben, OHNE [.value], Eigenschaft für Eigenschaft</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">computed</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">...)</span>
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">leitet einen Wert aus anderen <i>[ref]/[reactive]</i> ab, der automatisch nur dann neu berechnet wird, wenn sich seine Abhängigkeiten ändern – das direkte Äquivalent zu <i>[computed()] </i>auf der <i>[Angular]</i>-Seite und zu <i>[useMemo]</i>() auf der <i>[React]</i>-Seite</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>watch(source, callback)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">führt <i>[callback] </i>erneut aus, sobald sich <i>[source] </i>ändert – das Äquivalent zu <i>[useEffect]</i>(..., <i>[dep]</i>) auf der <i>[React]</i>-Seite oder zu <i>[effect()] </i>auf der <i>[Angular]</i>-Seite</div></td></tr></table>
+
+<p>Zwei Mechanismen ergänzen <em>[ref]/[reactive]</em> und ermöglichen es einer Komponente, mit ihrer Elternkomponente zu kommunizieren – sie finden sich durchgängig im <em>[RdvMedecins]</em>-Client (nächstes Kapitel), genau dort, wo <em>[input()]/[output()]</em> auf der <em>[Angular]</em>-Seite standen und auf der <em>[React]</em>-Seite die Props/Callback-Props:</p>
+<ul>
+  <li>die Props (<i>[defineProps&lt;...&gt;()]</i>): Eine <i>[Vue.js]</i>-Komponente deklariert das Format ihrer Eingaben mit <i>[defineProps]</i>, einer speziellen Funktion, die der Compiler erkennt (sie erfordert keinerlei <i>[import]</i>) – das direkte Äquivalent zu [input.required&lt;Doctor[]&gt;()] auf der <i>[Angular]</i>-Seite und zu einem destrukturierten Props-Objekt auf der <i>[React]</i>-Seite;
+  </li>
+  <li>die Ereignisse (<i>[defineEmits&lt;...&gt;()]</i>): Statt einer einfachen, als Prop übergebenen Funktion (der Wahl von <i>[React]</i>) unterscheidet <i>[Vue.js] </i>ausdrücklich die Ereignisse, die eine Komponente auslöst – die Funktion <i>[emit(‘eventName’, value)] </i>, die es zurückgibt, ist das direkte Äquivalent zu <i>[search.emit(value)] </i>auf der <i>[Angular]</i>-Seite (<i>[output&lt;...&gt;()]</i>).
+  </li>
+</ul>
+
+<p><span id="pas-de-modules--chaque-fichier-est-deja-autonome" name="pas-de-modules--chaque-fichier-est-deja-autonome" class="odt-bookmark-anchor"></span></p>
+<h2 id="56-keine-module-jede-datei-ist-bereits-eigenstandig">5.6. <span style="color: #2e74b5">Keine Module: Jede Datei ist bereits eigenständig</span></h2>
+<p>Eine AngularJS-1.x-Anwendung war in Module gegliedert (angular.module(...)). <em>[Angular]</em> übernahm diese Idee zunächst in einer starreren Form (die NgModule-Dateien), bevor es Standalone-Komponenten als Standardmodus einführte. Wie <em>[React]</em> hat <em>[Vue.js]</em> dieses Konzept nie benötigt: Eine <em>[.vue]</em>-Datei exportiert ihre Komponente implizit (das <em>[&lt;script setup&gt;] IST</em> der Default-Export der Datei, ohne dass man auch nur das Schlüsselwort <em>[export]</em> angeben müsste), und eine andere Datei verwendet sie mit einem einfachen <em>[import]</em> – die standardmäßigen ECMAScript-Module, ohne zusätzliche frameworkspezifische Schichten:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">Parent</span><span class="p">.</span><span class="nx">vue</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">setup</span><span class="w"> </span><span class="nx">lang</span><span class="o">=</span><span class="s2">"ts"</span><span class="o">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">Counter</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./Counter.vue'</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="o">&lt;</span><span class="err">/script&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">Counter</span><span class="w"> </span><span class="o">/&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">  </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="o">&lt;</span><span class="err">/template&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Dieser Stil wird im gesamten <em>[RdvMedecins]</em>-Client (nächstes Kapitel) verwendet: keine *.module.ts-Dateien, keine zu pflegenden [imports: [...]]-Dekoratoren – eine Vereinfachung, die der bereits bei <em>[React]</em> gesehenen entspricht, im Vergleich zu AngularJS 1.x und [Angular] mit NgModule.</p>
+<p><span id="partager-de-la-logique--les-composables-et-provideinject" name="partager-de-la-logique--les-composables-et-provideinject" class="odt-bookmark-anchor"></span></p>
+<h2 id="57-geteilte-logik-composables-und-provideinject">5.7. <span style="color: #2e74b5">Geteilte Logik: Composables und [provide]/[inject]</span></h2>
+<p>Wie in <em>[NestJS]</em> (Kapitel 2) benötigt der <em>[RdvMedecins]</em>-Client Logik, die von mehreren Komponenten gemeinsam genutzt wird: die Kommunikation mit dem Server, die Identifizierung des angemeldeten Benutzers und den Wechsel der Sprache. <em>[Angular]</em> begegnet diesem Bedarf mit injizierbaren Services (<em>[@Injectable]</em>({ providedIn: ‘root’ }) + inject(...)); <em>[React]</em> kombiniert eigene Hooks mit <em>[Context]</em>. <em>[Vue.js]</em> verwendet eine kombinierte Lösung ähnlich der von <em>[React]</em>, aber mit eigenem Vokabular und eigenem Mechanismus:</p>
+<ul>
+  <li>ein Composable – eine Funktion, deren Name per Konvention mit <i>[use] </i>beginnt (wie ein <i>[React]</i>-Hook) und die selbst andere <i>[Vue.js]</i>-Funktionen aufrufen kann (<i>[ref]</i>, [inject] …) – kapselt wiederverwendbare Logik, genau wie eine serverseitige Service-Methode in <i>[Angular]</i>;
+  </li>
+  <li>das Paar <i>[provide]/[inject] </i>teilt einen Wert (Zustand + Funktionen) mit dem GESAMTEN Komponentenunterbaum, ohne ihn Eigenschaft für Eigenschaft manuell durch jede Zwischenebene reichen zu müssen – die Rolle, die auf der <i>[providedIn: ‘root’] </i>-Seite von <i>[Angular]</i> und auf der <i>[Context] </i>-Seite von <i>[React]</i> gespielt wird. Anders als <i>[React]</i>, das verlangt, dass eine <i>[Provider]</i>-Komponente im Baum sichtbar um die Wurzelkomponente herum VERSCHACHTELT wird, <i>[Vue.js] </i>liefert einen Wert mit einem einzigen Funktionsaufruf, <i>[app.provide(key, value)]</i>, auf der Anwendungsinstanz (siehe main.ts, nächstes Kapitel) – ganz ohne Komponentenverschachtelung.
+  </li>
+</ul>
+
+<p>Hier ist ein kurzes, von der Fallstudie unabhängiges Beispiel, das konzeptionell <em>[MyService]</em> (<em>[Angular]</em>) und <em>[my-context.tsx]</em> (<em>[React]</em>) entspricht, die in diesem Kurs bereits vorgestellt wurden:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">// my-composable.ts</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">inject</span><span class="p">,</span><span class="w"> </span><span class="nx">reactive</span><span class="p">,</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">InjectionKey</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vue'</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kd">interface</span><span class="w"> </span><span class="nx">MyStore</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span><span class="nx">greet</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">MyStoreKey</span><span class="o">:</span><span class="w"> </span><span class="kt">InjectionKey</span><span class="o">&lt;</span><span class="nx">MyStore</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Symbol</span><span class="p">(</span><span class="s1">'MyStore'</span><span class="p">);</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createMyStore</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">MyStore</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">reactive</span><span class="o">&lt;</span><span class="nx">MyStore</span><span class="o">&gt;</span><span class="p">({</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">    </span><span class="nx">greet</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'Hello'</span><span class="p">,</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">  </span><span class="p">});</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="p">}</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">useMyStore</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">MyStore</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">inject</span><span class="p">(</span><span class="nx">MyStoreKey</span><span class="p">);</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">store</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'useMyStore() must be called after app.provide(MyStoreKey, ...)'</span><span class="p">);</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">store</span><span class="p">;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Zerlegen wir diesen Code:</p>
+<ul>
+  <li>Zeile 8: <i><b>[const MyStoreKey: InjectionKey&lt;MyStore&gt; = Symbol(&#x27;MyStore&#x27;);] </b></i>— der Injektionsschlüssel: ein <i>[Symbol] </i>statt eines einfachen Strings, um jede versehentliche Kollision mit einem anderen Schlüssel desselben Namens zu vermeiden – <i>[InjectionKey&lt;T&gt;] </i>ist auf der Typseite einfach ein Alias für <i>[Symbol] </i>, wodurch <i>[inject()] </i>den Typ des zurückgegebenen Werts automatisch bestimmen kann;
+  </li>
+  <li>Zeile 10: <i><b>[export function createMyStore(): MyStore {] </b></i>— die Factory, die NUR EINMAL aufgerufen wird (in <i>[main.ts]</i>; siehe nächstes Kapitel), BEVOR irgendeine Komponente existiert – weshalb sie etwaige Abhängigkeiten als gewöhnliche Funktionsparameter erhält und nicht über <i>[inject()]</i>;
+  </li>
+  <li>Zeile 11: <i><b>[return reactive&lt;MyStore&gt;({] </b></i>— <i>[reactive(...)] </i>hüllt das Objekt in einen JavaScript-Proxy: Jedes Lesen einer seiner Eigenschaften in einem <i>[&lt;template&gt;] </i>registriert automatisch eine Abhängigkeit; jeder Schreibvorgang zeichnet alles neu, was davon abhängt – anders als bei <i>[ref()]</i> wird die Eigenschaft (<i>[store.greet]</i>) direkt gelesen und geschrieben, ohne <i>[.value]</i>;
+  </li>
+  <li>Zeilen 16–22: <i><b>[export function useMyStore(): MyStore { …] </b></i>— das Composable, das die Komponenten aufrufen (<i>[const my = useMyStore();]</i>), so wie sie <i>[inject(MyService)] </i>von <i>[Angular]</i> oder <i>[useMyContext()] </i>von <i>[React]</i> aufgerufen hätten; der Fehler, der ausgelöst wird, wenn <i>[inject(MyStoreKey)] </i>den Wert <i>[undefined] </i>zurückgibt, weist auf eine vergessene Verdrahtung hin (der entsprechende <i>[app.provide(...)] </i>wurde nicht aufgerufen) – genau dasselbe Sicherheitsnetz wie auf der <i>[React]</i>-Seite (Context ist standardmäßig null).
+  </li>
+</ul>
+
+<p><span id="communiquer-avec-le-serveur--fetch" name="communiquer-avec-le-serveur--fetch" class="odt-bookmark-anchor"></span></p>
+<h2 id="58-kommunikation-mit-dem-server-fetch">5.8. <span style="color: #2e74b5">Kommunikation mit dem Server: [fetch]</span></h2>
+<p><em>[HttpClient]</em> (<em>[Angular]</em>) war der direkte Nachfolger des Services $http von AngularJS 1.x, der im ursprünglichen Dokument verwendet wurde. Wie <em>[React]</em> ist <em>[Vue.js]</em> lediglich ein Framework für Oberflächen und stellt im Kern keinen HTTP-Client bereit: Der <em>[RdvMedecins]</em>-Client verwendet direkt <em>[fetch]</em>, die Standard-API des Browsers (ohne zusätzliche Abhängigkeiten verfügbar):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">httpResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'http://localhost:8080/hello'</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">httpResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Ein wichtiger Unterschied zu $http und <em>[HttpClient]</em>: <em>[fetch]</em> gibt direkt ein Promise zurück (den asynchronen Standardmechanismus von JavaScript), kein Observable – keine RxJS-Bibliothek, kein <em>[.subscribe]</em>({ next, error }), kein <em>[.pipe(map(...))]</em>. Es kann mit <em>[.then(...)]</em> oder, für bessere Lesbarkeit, mit async/await verwendet werden (wie oben gezeigt). Ein Netzwerkfehler oder eine Fehlerantwort wird dann mit einem einfachen try/catch-Block behandelt und nicht mit dem Fehlerzweig eines RxJS-Abonnements – genau wie auf der <em>[React]</em>-Seite.</p>
+<p>Das Composable <em>[useAppointmentService()]</em> des <em>[RdvMedecins]</em>-Clients (nächstes Kapitel) kapselt systematisch diesen Aufruf von <em>[fetch]</em> gefolgt von <em>[.json()]</em>, und zwar aus einem bestimmten Grund, der an der entsprechenden Stelle erklärt wird (der <em>[ServerResponse]&lt;T&gt;</em>-Umschlag, der allen Serverantworten gemeinsam ist).</p>
+<p><span id="le-rendu-conditionnel-et-les-listes--v-ifv-else-et-v-for" name="le-rendu-conditionnel-et-les-listes--v-ifv-else-et-v-for" class="odt-bookmark-anchor"></span></p>
+<h2 id="59-bedingtes-rendern-und-listen-v-ifv-else-und-v-for">5.9. <span style="color: #2e74b5">Bedingtes Rendern und Listen: [v-if]/[v-else] und [v-for]</span></h2>
+<p>AngularJS 1.x verwendete strukturelle Direktiven (ng-if, ng-repeat), um ein Element bedingt anzuzeigen oder einen Template-Block für jedes Element einer Liste zu wiederholen. Die Variante <em>[Angular]</em> dieses Kurses verwendet die integrierte Syntax <em>[@if]/[@for]</em>; der <em>[React]</em>-Client drückt dasselbe mit dem ternären Operator und <em>[.map(...)]</em> in reinem JavaScript aus. <em>[Vue.js]</em> steht in diesem speziellen Punkt <em>[Angular]</em> näher: Sein <em>[&lt;template&gt;]</em> hat eine eigene „Sprache“ von Direktiven, die dem Geist von AngularJS 1.x sehr ähnelt (ng-if wird zu <em>[v-if]</em>, ng-repeat wird zu <em>[v-for]</em>):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"loggedInUser"</span><span class="p">&gt;</span>Welcome!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-else</span><span class="p">&gt;</span>Please log in.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">"item in itemList"</span> <span class="na">:key</span><span class="o">=</span><span class="s">"item.id"</span><span class="p">&gt;</span>{{ item.name }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Zerlegen wir diesen Code:</p>
+<ul>
+  <li>Zeilen 1–2: <i><b>[v-if=&quot;loggedInUser&quot; … v-else …] </b></i>— <i>[v-if]/[v-else] </i>ersetzen <i>[@if]/[@else]</i> (<i>[Angular]</i>) und ng-if (AngularJS 1.x): Nur der Zweig, dessen Bedingung wahr ist, wird im DOM EINGEHÄNGT – genau dasselbe Verhalten wie beim ternären Operator von <i>[React] </i>({ condition ? ... : ... }), jedoch als HTML-Attribut ausgedrückt und nicht als in <i>[JSX]</i> eingebetteter JavaScript-Ausdruck;
+  </li>
+  <li>Zeile 5: <i><b>[v-for=&quot;item in itemList&quot; :key=&quot;item.id&quot;]</b></i> — <i>[v-for] </i>ersetzt <i>[@for] </i>(<i>[Angular]</i>) und ng-repeat (AngularJS 1.x) und dient genau demselben Zweck wie <i>[.map(...)] </i>auf der <i>[React]</i>-Seite: Es wiederholt das Element für jeden Eintrag des Arrays. <i>[:key]</i> (erforderlich, genau wie <i>[key={item.id}] </i>in <i>[React] </i>und track in <i>[Angular]</i>) teilt <i>[Vue.js] </i>mit, wie es ein bereits angezeigtes Element wiedererkennt, wenn es die Liste neu zeichnet.
+  </li>
+</ul>
+
+<p><span id="recapitulatif--correspondances-angular---react---vuejs" name="recapitulatif--correspondances-angular---react---vuejs" class="odt-bookmark-anchor"></span></p>
+<h2 id="510-zusammenfassung-zuordnungen-angular-react-vuejs">5.10. <span style="color: #2e74b5">Zusammenfassung: Zuordnungen [Angular] -&gt; [React] -&gt; [Vue.js]</span></h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Angular]/[React] </i><i><b>(frühere Versionen dieses Kurses)</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Vue.js] </i><i><b>(2026)</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Standalone components ([@Component]) / functional components ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Single-File-Komponenten (<i>[.vue]</i>)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Signals (signal(), input(), output(), computed()) / [useState](), props, [useMemo]() ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[ref]</i>()<i>/[reactive]</i>(), <i>[defineProps]/[defineEmits]</i>, <i>[computed]</i>()</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>effect() / [useEffect]() ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[watch]</i>()</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Separate template (.html) + decorator (.ts) / embedded [JSX] (.tsx) ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[&lt;template&gt;] </i>+ <i>[&lt;script setup&gt;] </i>in derselben Datei vereint <i>[.vue]</i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[@if], [@for] / ternary operator, .map() ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[v-if]/[v-else]</i>, <i>[v-for]</i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Injectable services ([@Injectable]) + inject() / custom hooks + [Context] ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Composables + <i>[provide]/[inject]</i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[HttpClient] (RxJS Observables) / [fetch] (Promises) ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[fetch] </i>(native Promises, wie bei <i>[React]</i>)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[@angular/router] (empty routing table) / No router ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Kein Router (gleiche Schlussfolgerung, einen Schritt weitergedacht)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Angular CLI / [@angular/build] / [Vite] ([React])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Vite] </i>(mit <i>[@vitejs/plugin-vue] </i>statt <i>[@vitejs/plugin-react]</i>)</div></td></tr></table>
+
+<p>Diese Konzepte genügen, um den <em>[RdvMedecins]</em>-Client im nächsten Kapitel in Angriff zu nehmen: Jede neue Verwendung wird dort dennoch im Verlauf des Codes noch einmal an genau der Stelle erklärt, an der sie auftritt.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Dieses Tutorial, geschrieben von der KI <strong>Claude</strong> von Anthropic im Auftrag von <strong>Serge Tahé</strong>, wird der Öffentlichkeit unter den Bedingungen der Lizenz
+        <em>Creative Commons Namensnennung – Nicht kommerziell –
+        Weitergabe unter gleichen Bedingungen 3.0 Unported</em> zur Verfügung gestellt.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
